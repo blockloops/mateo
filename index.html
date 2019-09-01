@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang= "pt-br">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <title>TERMINAL DE SAQUE</title>
+</head>
+<body>
+        <div class="container-fluid bg-2 text-center">
+        <h1> <font face="Garamond">BALANCE CHECK & TRANSFER PANEL</font> </h1>
+        <h2> <font face="Garamond"><b>BLOCKLOOPS.io</b></font></h2></div>
+        <br>
+        <h2><font face="Garamond">GET BALANCE</font></h2>
+        
+        <div id="getBalances">
+            <button onclick="getBalances()">SUBMIT</span></button>
+            </div>
+            <div id="getBalances"></div>
+            <hr>
+
+        <h2><font face="Garamond">WITHDRAW ALL</font></h2>
+            <div id="withdrawAll">
+            <button onclick="withdrawAll()">SUBMIT</span></button>
+            </div>
+            <div id="withdrawAll"></div>
+            <div>
+            <div id="statusTransacao">&nbsp;</div>
+            
+        <h2><font face="Garamond">WITHDRAW 50%</font></h2>
+        <div id="withdraw50percent">
+            <button onclick="withdraw50percent()">SUBMIT</span></button>
+            </div>
+            <div id="withdraw50percent"></div>
+            <div>
+            <div id="statusTransacao">&nbsp;</div>
+
+        <h2><font face="Garamond">WITHDRAW 10%</font></h2>
+        <div id="withdraw10percent">
+            <button onclick="withdraw10percent()">SUBMIT</span></button>
+            </div>
+            <div id="withdraw10percent"></div>
+            <div>
+            <div id="statusTransacao">&nbsp;</div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="connectToSmartContract.js"></script>
+        <script src="abi.js"></script>
+
+
+        <script>
+
+            var formgetBalances = document.formgetBalances;
+            function getBalances() {
+                event.preventDefault();
+                    $("#resultadoPesquisa").html("");
+                    contract.BirthCertificate(formgetBalances.(address(this).balance).value, function (erro, resultado) {
+                        if (erro) {
+                            console.log("getBalances");
+                            console.error(erro);
+                            alert("Error");
+                            formgetBalances.(address(this).balance).value = "";
+                            return
+                        }
+                        $("#resultadoPesquisa").html("Total Balance: " + resultado);
+                    })
+                }
+    
+            var withdrawAll = document.withdrawAll;
+            function withdrawAll() {
+                event.preventDefault();
+                    $("#resultadoPesquisa").html("");
+                    contract.BirthCertificate((withdrawAll(), function (erro, resultado)) {
+                        if (erro) {
+                            console.log("ConsultarData");
+                            console.error(erro);
+                            alert("Houve um erro");
+                            frmPesquisa2.numeroAta.value = "";
+                            return
+                        }
+                        $("#resultadoPesquisa").html("Data da reunião: " + resultado);
+                    })
+                }
+    
+                var frmPesquisa3 = document.formPesquisa3;
+                function ConsultarPauta() {
+                    event.preventDefault();
+                    $("#resultadoPesquisa").html("");
+                    contract.ConsultarPauta(frmPesquisa3.numeroAta.value, function (erro, resultado) {
+                        if (erro) {
+                            console.log("consultarPauta");
+                            console.error(erro);
+                            alert("Houve um erro na tentativa de consulta");
+                            frmPesquisa3.numeroAta.value = "";
+                            return
+                        }
+                        $("#resultadoPesquisa").html("Pauta: " + resultado);
+                    })
+                }
+    
+                var frmRegistro = document.formRegistro;
+                function ArquivarAta() {
+                    event.preventDefault();
+                    $("#statusTransacao").html("&nbsp;");
+                    contract.ArquivarAta(frmRegistro.pauta.value, frmRegistro.decisao.value, frmRegistro.data.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (erro, resultado) {
+                        if (erro) {
+                            console.log("ArquivarAta");
+                            console.error(erro);
+                            alert("Houve um erro ao arquivar esta ata");
+                            return
+                        }
+                        waitForTxToBeMined(resultado, "#statusTransacao");
+                    })
+                }
+    
+            </script>
+        
+        
