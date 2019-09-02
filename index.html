@@ -56,8 +56,8 @@
             function getBalances() {
                 event.preventDefault();
                     $("#resultadoPesquisa").html("");
-                    contract.BirthCertificate(getBalances.balance.value, function (erro, resultado) {
-                        if (erro) {
+                        web3.eth.getBalances('...', function (err, result) { console.log(result); });                        
+                            if (erro) {
                             console.log("getBalances");
                             console.error(erro);
                             alert("Error");
