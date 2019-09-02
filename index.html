@@ -52,16 +52,16 @@
 
         <script>
 
-            var formgetBalances = document.formgetBalances;
+            var getBalances = document.getBalances;
             function getBalances() {
                 event.preventDefault();
                     $("#resultadoPesquisa").html("");
-                    contract.BirthCertificate(formgetBalances.(address(this).balance).value, function (erro, resultado) {
+                    contract.BirthCertificate(getBalances.balance.value, function (erro, resultado) {
                         if (erro) {
                             console.log("getBalances");
                             console.error(erro);
                             alert("Error");
-                            formgetBalances.(address(this).balance).value = "";
+                            getBalances.balance.value = "";
                             return
                         }
                         $("#resultadoPesquisa").html("Total Balance: " + resultado);
@@ -71,50 +71,51 @@
             var withdrawAll = document.withdrawAll;
             function withdrawAll() {
                 event.preventDefault();
-                    $("#resultadoPesquisa").html("");
-                    contract.BirthCertificate((withdrawAll(), function (erro, resultado)) {
+                $("#statusTransacao").html("&nbsp;"); 
+                contract.withdrawAll {from: web3.eth.accounts[1], gas: 3000000, value: 0}, function (erro, resultado) {
                         if (erro) {
-                            console.log("ConsultarData");
+                            console.log("withdrawAll");
                             console.error(erro);
                             alert("Houve um erro");
-                            frmPesquisa2.numeroAta.value = "";
-                            return
-                        }
-                        $("#resultadoPesquisa").html("Data da reunião: " + resultado);
-                    })
-                }
-    
-                var frmPesquisa3 = document.formPesquisa3;
-                function ConsultarPauta() {
-                    event.preventDefault();
-                    $("#resultadoPesquisa").html("");
-                    contract.ConsultarPauta(frmPesquisa3.numeroAta.value, function (erro, resultado) {
-                        if (erro) {
-                            console.log("consultarPauta");
-                            console.error(erro);
-                            alert("Houve um erro na tentativa de consulta");
-                            frmPesquisa3.numeroAta.value = "";
-                            return
-                        }
-                        $("#resultadoPesquisa").html("Pauta: " + resultado);
-                    })
-                }
-    
-                var frmRegistro = document.formRegistro;
-                function ArquivarAta() {
-                    event.preventDefault();
-                    $("#statusTransacao").html("&nbsp;");
-                    contract.ArquivarAta(frmRegistro.pauta.value, frmRegistro.decisao.value, frmRegistro.data.value, {from: web3.eth.accounts[0], gas: 3000000, value: 0}, function (erro, resultado) {
-                        if (erro) {
-                            console.log("ArquivarAta");
-                            console.error(erro);
-                            alert("Houve um erro ao arquivar esta ata");
+                            withdrawAll.balance.value = "";
                             return
                         }
                         waitForTxToBeMined(resultado, "#statusTransacao");
                     })
                 }
     
+           function withdraw50percent() {
+                event.preventDefault();
+                $("#statusTransacao").html("&nbsp;"); 
+                contract.withdraw50percent {from: web3.eth.accounts[1], gas: 3000000, value: 0}, function (erro, resultado) {
+                        if (erro) {
+                            console.log("withdraw50percent");
+                            console.error(erro);
+                            alert("Houve um erro");
+                            withdraw50percent.balance.value = "";
+                            return
+                        }
+                        waitForTxToBeMined(resultado, "#statusTransacao");
+                    })
+                }
+    
+           function withdraw10percent() {
+                event.preventDefault();
+                $("#statusTransacao").html("&nbsp;"); 
+                contract.withdraw10percent {from: web3.eth.accounts[1], gas: 3000000, value: 0}, function (erro, resultado) {
+                        if (erro) {
+                            console.log("withdraw10percent");
+                            console.error(erro);
+                            alert("Houve um erro");
+                            withdraw10percent.balance.value = "";
+                            return
+                        }
+                        waitForTxToBeMined(resultado, "#statusTransacao");
+                    })
+                } 
+    
             </script>
+            </body>
+    </html>
         
         
